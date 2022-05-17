@@ -8,7 +8,7 @@ PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = ""
 PROFILE = ""
 PROJECT_NAME = {{ cookiecutter.repo_name }}
-PYTHON_INTERPRETER = "python"
+PYTHON_INTERPRETER = "python3"
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -39,20 +39,20 @@ lint:
 	flake8 src
 
 ## Upload Data to S3
-sync_data_to_s3:
-ifeq (default,$(PROFILE))
-	aws s3 sync data/ s3://$(BUCKET)/data/
-else
-	aws s3 sync data/ s3://$(BUCKET)/data/ --profile $(PROFILE)
-endif
+##sync_data_to_s3:
+##ifeq (default,$(PROFILE))
+##	aws s3 sync data/ s3://$(BUCKET)/data/
+##else
+##	aws s3 sync data/ s3://$(BUCKET)/data/ --profile $(PROFILE)
+##endif
 
 ## Download Data from S3
-sync_data_from_s3:
-ifeq (default,$(PROFILE))
-	aws s3 sync s3://$(BUCKET)/data/ data/
-else
-	aws s3 sync s3://$(BUCKET)/data/ data/ --profile $(PROFILE)
-endif
+##sync_data_from_s3:
+##ifeq (default,$(PROFILE))
+##	aws s3 sync s3://$(BUCKET)/data/ data/
+##else
+##	aws s3 sync s3://$(BUCKET)/data/ data/ --profile $(PROFILE)
+##endif
 
 ## Set up python interpreter environment
 create_environment:
