@@ -10,11 +10,6 @@
 * conda activate ml-python-3.8
 * pip install cookiecutter 
 
-linha 1  
-linha 2
-linha 3  
-linha 4
-
 #### 1- Duplicação de repositórios
 * criar repositório tool
 	git@github.com:acnaweb/ml-tool.git
