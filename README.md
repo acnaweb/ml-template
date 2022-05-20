@@ -6,9 +6,9 @@
 * gh
  * wget https://github.com/cli/cli/releases/download/v2.10.1/gh_2.10.1_linux_amd64.deb
 	* sudo apt install ./gh_2.10.1_linux_amd64.deb
- * conda create --name ml-python-3.8 python=3.8.5
- * conda activate ml-python-3.8
- * pip install cookiecutter 
+* conda create --name ml-python-3.8 python=3.8.5
+* conda activate ml-python-3.8
+* pip install cookiecutter 
 
 #### 1- Duplicação de repositórios
 * criar repositório tool
@@ -24,36 +24,34 @@
 	
 #### 2-Gitflow
 * git@github.com:acnaweb/ml-template.git	
-Init
-	git flow init
-	git push
-Setup default branch
+	* git flow init
+	* git push
+	* setup default branch
 
 * git@github.com:acnaweb/ml-tool.git
-Init
-	git flow init
-	git push
-Setup default branch
+	* git flow init
+	* git push
+	* setup default branch
 
 
 #### 3 - Create new from ml-template
 Base: http://drivendata.github.io/cookiecutter-data-science/
 
-cookiecutter https://github.com/acnaweb/ml-template.git
-cookiecutter ml-template
+* cookiecutter https://github.com/acnaweb/ml-template.git
+* cookiecutter ml-template
 
 * Option 1
-	gh repo create modelo-will --template="acnaweb/ml-template" --private
-	gh repo create {{new_repo}} --template="acnaweb/ml-template" --private
+	* gh repo create modelo-will --template="acnaweb/ml-template" --private
+	* gh repo create {{new_repo}} --template="acnaweb/ml-template" --private
 
 * Option 2
 script {
-gh repo create "${{user}}/${{repository}}" --private
+`gh repo create "${{user}}/${{repository}}" --private
 git init
 git add . && git commit -m "init"
 git branch -M main
 git remote add origin https://github.com/${{user}}/${{repository}}.git
-git push -u origin main
+git push -u origin main`
 }
 	
 #### 4- Setup requirements
