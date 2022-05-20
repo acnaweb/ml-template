@@ -45,29 +45,28 @@ Base: http://drivendata.github.io/cookiecutter-data-science/
 	* gh repo create {{new_repo}} --template="acnaweb/ml-template" --private
 
 * Option 2
-`
-- gh repo create "${{user}}/${{repository}}" --private
-- git init
-- git add . && git commit -m "init"
-- git branch -M main
-- git remote add origin https://github.com/${{user}}/${{repository}}.git
-- git push -u origin main`
-
+	`
+	- gh repo create "${{user}}/${{repository}}" --private
+	- git init
+	- git add . && git commit -m "init"
+	- git branch -M main
+	- git remote add origin https://github.com/${{user}}/${{repository}}.git
+	- git push -u origin main
+	`
 	
 #### 4- Setup requirements
-git@github.com:acnaweb/ml-template.git	
+- git@github.com:acnaweb/ml-template.git	
 
 - Instructions
-make
-make create_environment
-make requirements
+	- make
+	- make create_environment
+	- make requirements
 
-Fluxo
+#### Fluxo
+- Data
+	- make data
 
-Data
-make data
-
-Train
+- Train
 
 
 
