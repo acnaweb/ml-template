@@ -1,0 +1,103 @@
+
+--------------------------------------------------
+sudo apt install git git-flow
+
+gh
+   wget https://github.com/cli/cli/releases/download/v2.10.1/gh_2.10.1_linux_amd64.deb
+   
+sudo apt install ./gh_2.10.1_linux_amd64.deb
+
+conda create --name ml-python-3.8 python=3.8.5
+conda activate ml-python-3.8
+pip install cookiecutter 
+
+
+--------------------------------------------------
+Create repo
+
+cookiecutter https://github.com/acnaweb/ml-template.git
+cookiecutter ml-template
+
+
+--------------------------------------------------
+cd project-folder
+
+conda create --name ml-demo python=3.8.5
+conda activate ml-demo
+
+--------------------------------------------------
+Setup
+	make requirements
+	make create_repository
+	make setup
+	
+--------------------------------------------------
+Data Science
+
+src/app/data/
+settings.CREATE_PROFILER
+
+DataIngestion.load
+	"https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+	
+DataIngestion.validate_data
+
+DataPreparation.set_header
+	["sepal length in cm", "sepal width in cm", "petal length in cm", "petal width in cm", "target"]
+	
+	make run_etl			
+		data/*
+		reports/*
+
+
+--------------------------------------------------
+MLFlow	
+project-folder/mlflow ui --host 0.0.0.0
+
+--------------------------------------------------
+src/app/models/
+settings.EXPERIMENT_NAME (MLFlow)
+settings.params = {}
+
+model.Model - Extends AlgoritmModel
+	from sklearn.linear_model import LogisticRegression
+	LogisticRegression
+	
+model.train
+model.validate_training	
+model.evaluate_performance
+
+experiment.track_performance_metrics 		
+	
+	make run_train
+		MLflow
+			
+--------------------------------------------------
+src/app/models/
+predict_model.get_dataset
+predict_model.logged_model = 
+			generalizar por model/ no MLFlow
+			'runs:/[id]'
+				
+	make batch
+		data/*				
+--------------------------------------------------	
+src/app/models/
+api.logged_model = 
+			generalizar por model/ no MLFlow
+			'runs:/[id]'	
+			
+api.columns 
+	["sepal length in cm", "sepal width in cm", "petal length in cm", "petal width in cm"]
+	
+	make serve
+		POST http://127.0.0.1:8080/invocations
+{
+    "sepal length in cm": 4.9,
+    "sepal width in cm": 3.0,
+    "petal length in cm": 1.4,
+    "petal width in cm": 0.2
+}
+
+		
+	
