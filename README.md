@@ -1,115 +1,108 @@
 # ml-template
 
-#### Pre-req
+## Instalação
 
-* sudo apt install git git-flow
-* gh
- * wget https://github.com/cli/cli/releases/download/v2.10.1/gh_2.10.1_linux_amd64.deb
-	* sudo apt install ./gh_2.10.1_linux_amd64.deb
-* conda create --name ml-python-3.8 python=3.8.5
-* conda activate ml-python-3.8
-* pip install cookiecutter 
+### 1 - Pré-requisitos
 
-#### 1- Duplicação de repositórios
-* criar repositório tool
-	git@github.com:acnaweb/ml-tool.git
+#### Git & Git Flow
+- sudo apt install git git-flow
+
+#### Github client (gh)
+- wget https://github.com/cli/cli/releases/download/v2.10.1/gh_2.10.1_linux_amd64.deb
+- sudo apt install ./gh_2.10.1_linux_amd64.deb
+
+#### Conda Environment
+- conda create --name ml-python-3.8 python=3.8.5
+- conda activate ml-python-3.8
+
+#### Cookiecutter tool
+- pip install cookiecutter 
+
+### 2 - Criação de Repositório
+
+#### Cookiecutter 
+- cookiecutter https://github.com/trybe/ml-template.git
 	
-* criar repositório template
-	git@github.com:acnaweb/ml-template.git
- 
-	* Configurar como "Template Repository"
-		https://docs.github.com/pt/repositories/creating-and-managing-repositories/creating-a-template-repository
-		https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
-		
+### 3 - Setup
+
+#### Conda environment
+- cd project-folder/
+- conda create --name [env_name] python=3.8.5
+- conda activate [env_name]
+
+#### Repositorio
+- make requirements
+- make create_repository
+	- verificar o respoitorio criado em https://github.com/betrybe/[repositorio]
+- make setup
 	
-#### 2-Gitflow
-* git@github.com:acnaweb/ml-template.git	
-	* git flow init
-	* git push
-	* setup default branch
+## Ciencia de Dados	
 
-* git@github.com:acnaweb/ml-tool.git
-	* git flow init
-	* git push
-	* setup default branch
+src/app/data/
+settings.CREATE_PROFILER
 
-
-#### 3 - Create new from ml-template
-Base: http://drivendata.github.io/cookiecutter-data-science/
-
-* cookiecutter https://github.com/acnaweb/ml-template.git
-* cookiecutter ml-template
-
-* Option 1
-	* gh repo create modelo-will --template="acnaweb/ml-template" --private
-	* gh repo create {{new_repo}} --template="acnaweb/ml-template" --private
-
-* Option 2
-	`
-	- gh repo create "${{user}}/${{repository}}" --private
-	- git init
-	- git add . && git commit -m "init"
-	- git branch -M main
-	- git remote add origin https://github.com/${{user}}/${{repository}}.git
-	- git push -u origin main
-	`
+DataIngestion.load
+	"https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
 	
-#### 4- Setup requirements
-- git@github.com:acnaweb/ml-template.git	
+DataIngestion.validate_data
 
-- Instructions
-	- make
-	- make create_environment
-	- make requirements
-
-#### Fluxo
-- Data
-	- make data
-
-- Train
+DataPreparation.set_header
+	["sepal length in cm", "sepal width in cm", "petal length in cm", "petal width in cm", "target"]
+	
+	make run_etl			
+		data/*
+		reports/*
 
 
+--------------------------------------------------
+MLFlow	
+project-folder/mlflow ui --host 0.0.0.0
 
+--------------------------------------------------
+src/app/models/
+settings.EXPERIMENT_NAME (MLFlow)
+settings.params = {}
 
-_A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
+model.Model - Extends AlgoritmModel
+	from sklearn.linear_model import LogisticRegression
+	LogisticRegression
+	
+model.train
+model.validate_training	
+model.evaluate_performance
 
+experiment.track_performance_metrics 		
+	
+	make run_train
+		MLflow
+			
+--------------------------------------------------
+src/app/models/
+predict_model.get_dataset
+predict_model.logged_model = 
+			generalizar por model/ no MLFlow
+			'runs:/[id]'
+				
+	make batch
+		data/*				
+--------------------------------------------------	
+src/app/models/
+api.logged_model = 
+			generalizar por model/ no MLFlow
+			'runs:/[id]'	
+			
+api.columns 
+	["sepal length in cm", "sepal width in cm", "petal length in cm", "petal width in cm"]
+	
+	make serve
+		POST http://127.0.0.1:8080/invocations
+{
+    "sepal length in cm": 4.9,
+    "sepal width in cm": 3.0,
+    "petal length in cm": 1.4,
+    "petal width in cm": 0.2
+}
 
-#### [Project homepage](http://drivendata.github.io/cookiecutter-data-science/)
-
-
-### Requirements to use the cookiecutter template:
------------
- - Python 3.8+
- - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: This can be installed with pip by or conda depending on how you manage your Python packages:
-
-``` bash
-$ pip install cookiecutter
-```
-
-or
-
-``` bash
-$ conda config --add channels conda-forge
-$ conda install cookiecutter
-```
-
-
-### To start a new project, run:
-------------
-
-    cookiecutter -c v1 https://github.com/drivendata/cookiecutter-data-science
-
-
-[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
-
-### New version of Cookiecutter Data Science
-------------
-Cookiecutter data science is moving to v2 soon, which will entail using
-the command `ccds ...` rather than `cookiecutter ...`. The cookiecutter command
-will continue to work, and this version of the template will still be available.
-To use the legacy template, you will need to explicitly use `-c v1` to select it.
-Please update any scripts/automation you have to append the `-c v1` option (as above),
-which is available now.
 
 
 ### The resulting directory structure
@@ -122,58 +115,34 @@ The directory structure of your new project looks like this:
 ├── Makefile           <- Makefile with commands like `make data` or `make train`
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
 │   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
+│   └── raw            <- The original, immutable data dump.│
 │
 ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
 │                         the creator's initials, and a short `-` delimited description, e.g.
 │                         `1.0-jqp-initial-data-exploration`.
 │
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
 ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
 │
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
 │                         generated with `pip freeze > requirements.txt`
+├── scripts            <- scripts for make
 │
-├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-├── src                <- Source code for use in this project.
+├── src/app                <- Source code for use in this project.
 │   ├── __init__.py    <- Makes src a Python module
 │   │
 │   ├── data           <- Scripts to download or generate data
 │   │   └── make_dataset.py
 │   │
-│   ├── features       <- Scripts to turn raw data into features for modeling
-│   │   └── build_features.py
+│   ├── conf       	<- Used for general configurations
 │   │
 │   ├── models         <- Scripts to train models and then use trained models to make
-│   │   │                 predictions
-│   │   ├── predict_model.py
-│   │   └── train_model.py
-│   │
-│   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-│       └── visualize.py
+│                       predictions
 │
 └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 ```
 
-## Contributing
+## References
 
-We welcome contributions! [See the docs for guidelines](https://drivendata.github.io/cookiecutter-data-science/#contributing).
+[See the docs for guidelines](https://drivendata.github.io/cookiecutter-data-science/#contributing).
 
-### Installing development requirements
-------------
-
-    pip install -r requirements.txt
-
-### Running the tests
-------------
-
-    py.test tests
