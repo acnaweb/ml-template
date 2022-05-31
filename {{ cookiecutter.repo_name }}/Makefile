@@ -24,3 +24,6 @@ batch:
 
 serve:
 	python src/app/models/api.py
+
+lint:
+	flake8 

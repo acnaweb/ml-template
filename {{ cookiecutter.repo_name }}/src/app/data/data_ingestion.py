@@ -1,5 +1,4 @@
 import logging
-import pandas as pd
 import pandas_profiling
 from settings import RAW_DATASET, CREATE_PROFILER, RAW_REPORT_PROFILER
 from utils import serialize_dataset, unserialize_dataset
@@ -22,22 +21,21 @@ class DataIngestion:
         self.load()
 
         try:
-            self.validate_data()           
+            self.validate_data()
 
         except ValidationError as e:
-            logging.error("Invalid dataset: {}".format(e))        
+            logging.error("Invalid dataset: {}".format(e))
         else:
             self.save()
         finally:
             logging.info("finish run DataIngestion")
 
-    def load(self): 
+    def load(self):
         """Load data"""
         logging.info("loading data")
 
-        self.dataset =  unserialize_dataset("<DATA_SOURCE>")
+        self.dataset = unserialize_dataset("<DATA_SOURCE>")
 
-    
     def validate_data(self):
         """Validation rules"""
         logging.info("validating data")
@@ -47,8 +45,7 @@ class DataIngestion:
         logging.info("saving data")
 
         serialize_dataset(self.dataset, RAW_DATASET)
-        
-        if CREATE_PROFILER: 
+
+        if CREATE_PROFILER:
             profile = pandas_profiling.ProfileReport(self.dataset)
             profile.to_file(RAW_REPORT_PROFILER)
-

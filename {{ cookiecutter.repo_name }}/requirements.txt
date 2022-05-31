@@ -9,6 +9,7 @@ cycler==0.11.0
 databricks-cli==0.16.6
 docker==5.0.3
 entrypoints==0.4
+flake8==4.0.1
 Flask==2.1.2
 fonttools==4.33.3
 gitdb==4.0.9
@@ -27,6 +28,7 @@ kiwisolver==1.4.2
 Mako==1.2.0
 MarkupSafe==2.1.1
 matplotlib==3.5.2
+mccabe==0.6.1
 missingno==0.5.1
 mlflow==1.26.0
 multimethod==1.8
@@ -43,6 +45,7 @@ prometheus-flask-exporter==0.20.1
 protobuf==3.20.1
 pycodestyle==2.8.0
 pydantic==1.9.1
+pyflakes==2.4.0
 PyJWT==2.4.0
 pyparsing==3.0.9
 python-dateutil==2.8.2

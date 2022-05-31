@@ -1,7 +1,7 @@
 import logging
 
 params = {
-    "test_size": 0.25, 
+    "test_size": 0.25,
     "random_state": 42
 }
 
@@ -14,4 +14,3 @@ def print_settings():
     logging.info("*** model parameters ***")
 
     logging.info("params={}".format(params))
-   

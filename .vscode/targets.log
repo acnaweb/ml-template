@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 26 16:19:28 2022
+# Make data base, printed on Tue May 31 11:26:09 2022
 
 # Variables
 
@@ -51,11 +51,9 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:99054
+JOURNAL_STREAM = 8:60448
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
-# environment
-CONDA_PREFIX_1 = /home/ac/Local/anaconda
 # makefile
 MAKEFILE_LIST := 
 # environment
@@ -81,7 +79,7 @@ _ = /usr/bin/code
 # environment
 LC_CTYPE = pt_BR.UTF-8
 # environment
-MANAGERPID = 6088
+MANAGERPID = 2103
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -91,15 +89,15 @@ VSCODE_CWD = /home/ac/Projects/ml-template
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/ac/Local/anaconda/envs/ml-python-3.8/bin:/home/ac/Local/anaconda/condabin:/home/ac/.poetry/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/node/bin:node_modules/.bin:/opt/jdk/bin:/opt/jre/bin
+PATH = /home/ac/Local/anaconda/bin:/home/ac/Local/anaconda/condabin:/home/ac/.poetry/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/node/bin:./node_modules/.bin:/opt/jdk/bin:/opt/jre/bin
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/wkslinux:@/tmp/.ICE-unix/6313,unix/wkslinux:/tmp/.ICE-unix/6313
+SESSION_MANAGER = local/wkslinux:@/tmp/.ICE-unix/2329,unix/wkslinux:/tmp/.ICE-unix/2329
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-CONDA_PREFIX = /home/ac/Local/anaconda/envs/ml-python-3.8
+CONDA_PREFIX = /home/ac/Local/anaconda
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -107,7 +105,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 254c3c8031f646eca93b5f4c1737fa63
+INVOCATION_ID = 88ce88ea95b74371a9036765abcfe264
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -115,7 +113,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-qu8vSTo4dgim/agent.6206
+SSH_AUTH_SOCK = /tmp/ssh-04HzoGuQOmi0/agent.2223
 # automatic
 %F = $(notdir $%)
 # environment
@@ -129,7 +127,7 @@ PWD = /home/ac/Projects/ml-template
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 6275
+SSH_AGENT_PID = 2291
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -149,7 +147,7 @@ LOGNAME = ac
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
-CONDA_PROMPT_MODIFIER = (ml-python-3.8) 
+CONDA_PROMPT_MODIFIER = (base) 
 # automatic
 +F = $(notdir $+)
 # environment
@@ -163,7 +161,7 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # environment
 LC_TIME = pt_BR.UTF-8
 # environment
-CONDA_DEFAULT_ENV = ml-python-3.8
+CONDA_DEFAULT_ENV = base
 # environment
 COLORTERM = truecolor
 # default
@@ -179,7 +177,7 @@ NODE_HOME = /opt/node
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6607307f-e1e5-4e4e-9c55-d887a2ed9c7e.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-1dcb66d3-a340-4a91-97b2-41dda811242f.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -195,7 +193,7 @@ XDG_CURRENT_DESKTOP = Unity
 # environment
 LC_TELEPHONE = pt_BR.UTF-8
 # environment
-CONDA_SHLVL = 2
+CONDA_SHLVL = 1
 # default
 MAKE_COMMAND := make
 # environment
@@ -219,8 +217,6 @@ GDK_BACKEND = x11
 # environment
 LC_PAPER = pt_BR.UTF-8
 # environment
-NO_AT_BRIDGE = 1
-# environment
 LC_IDENTIFICATION = pt_BR.UTF-8
 # environment
 QT_ACCESSIBILITY = 1
@@ -241,11 +237,11 @@ CONDA_PYTHON_EXE = /home/ac/Local/anaconda/bin/python
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/726a5267_58ca_4b23_a07d_d899c76475d2
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/950b0472_cf5c_4eee_8d02_38a775f30dec
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.141
+GNOME_TERMINAL_SERVICE = :1.521
 # default
 SUFFIXES := 
 # environment
@@ -267,11 +263,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 19456
+VSCODE_PID = 127479
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
-# Load=129/1024=13%, Rehash=0, Collisions=23/151=15%
+# Load=127/1024=12%, Rehash=0, Collisions=23/149=15%
 
 # Pattern-specific Variable Values
 
@@ -283,6 +279,7 @@ _CE_CONDA =
 
 # 13 files, no impossibilities in 1 directories.
 
+ 
 # Implicit Rules
 
 # No implicit rules.
@@ -291,7 +288,6 @@ _CE_CONDA =
 
 # Not a target:
 all:
- 
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -338,6 +334,6 @@ GNUmakefile:
 # strcache performance: lookups = 24 / hit rate = 12%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Thu May 26 16:19:28 2022
+# Finished Make data base on Tue May 31 11:26:09 2022
 
  
