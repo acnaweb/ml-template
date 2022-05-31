@@ -1,4 +1,4 @@
-# Cookiecutter Data Science
+# ml-template
 
 #### Pre-req
 
