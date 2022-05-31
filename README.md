@@ -38,69 +38,68 @@
 	
 ## Ciencia de Dados	
 
-src/app/data/
-settings.CREATE_PROFILER
+#### ETL
+- src/app/data/settings
+	- CREATE_PROFILER
+		- True - gerar relatórios automaticamente 
+		- False - não gerar relatórios automaticamente
 
-DataIngestion.load
-	"https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+- src/app/data/data_ingestion.py
+	- DataIngestion.load() - implementar o data source
+	- DataIngestion.validate_data() - implementar a validação dos dados
 	
-DataIngestion.validate_data
-
-DataPreparation.set_header
-	["sepal length in cm", "sepal width in cm", "petal length in cm", "petal width in cm", "target"]
+- src/app/data/data_prep.py
+	- DataPreparation.set_header() - implementar o header do dataser		
 	
-	make run_etl			
-		data/*
-		reports/*
-
+- run	
+	- make run_etl			
+		- output: data/*
+		- output: reports/*
 
 --------------------------------------------------
 MLFlow	
 project-folder/mlflow ui --host 0.0.0.0
 
---------------------------------------------------
-src/app/models/
-settings.EXPERIMENT_NAME (MLFlow)
-settings.params = {}
+#### Experimento
+- src/app/models/settings.py
+	- EXPERIMENT_NAME - configurar o nome do experimento no ML Flow
+	- params = configurar o dicionário de hiperparâmetros
 
-model.Model - Extends AlgoritmModel
-	from sklearn.linear_model import LogisticRegression
-	LogisticRegression
-	
-model.train
-model.validate_training	
-model.evaluate_performance
+- src/app/models/model.py
+	- Model - extender a classe base para o algoritmo		
+	- Model.train() - definir algoritmo de treinamento
+	- model.validate_training()  - definir algoritmo de validação
+	- model.evaluate_performance() - definir algoritmo de avaliação 
 
-experiment.track_performance_metrics 		
-	
-	make run_train
-		MLflow
+- src/app/models/experiment
+	- track_performance_metrics() - parâmetros com tracking no ML Flow	
+
+- run	
+	- make run_train
+		- ouptput: MLflow			 	
 			
---------------------------------------------------
-src/app/models/
-predict_model.get_dataset
-predict_model.logged_model = 
-			generalizar por model/ no MLFlow
-			'runs:/[id]'
-				
-	make batch
-		data/*				
---------------------------------------------------	
-src/app/models/
-api.logged_model = 
-			generalizar por model/ no MLFlow
-			'runs:/[id]'	
-			
-api.columns 
-	["sepal length in cm", "sepal width in cm", "petal length in cm", "petal width in cm"]
-	
-	make serve
-		POST http://127.0.0.1:8080/invocations
+#### Predição em batch
+
+- src/app/models/predict_model.py
+	- get_dataset() - dataset para predição
+	- logged_model = id do modelo no MLFlow			
+- make batch
+	- output: data/*
+
+#### Predição online
+
+- src/app/models/api.py
+	- logged_model = id do modelo no MLFlow			
+	- columns = nomes dos atributos no json recebido pelo POST
+
+- make serve
+	- POST http://127.0.0.1:8080/invocations
+Data:
 {
-    "sepal length in cm": 4.9,
-    "sepal width in cm": 3.0,
-    "petal length in cm": 1.4,
-    "petal width in cm": 0.2
+    "attr1": 1,
+    "attr2": 0.5,
+    ...
+    "attrN": 2,
 }
 
 
